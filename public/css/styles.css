@@ -1,6 +1,16 @@
 /* General Styles */
 :root {
-  --main-color: radial-gradient(rgb(0, 132, 255), rgba(82, 174, 250, 0.473));
+  --main-color: radial-gradient(rgb(0, 132, 255), rgba(82, 174, 250, 0.671));
+  --second-color: radial-gradient(
+    rgba(0, 132, 255, 0.973),
+    rgba(82, 174, 250, 0.473)
+  );
+  --third-color: radial-gradient(
+    rgba(0, 132, 255, 0.904),
+    rgba(82, 174, 250, 0.274)
+  );
+
+  --main-bg: linear-gradient(#333744, #0f1014);
 }
 * {
   margin: 0;
@@ -17,13 +27,14 @@ input {
 }
 
 body {
-  line-height: 1.4;
+  line-height: 1;
   color: #242424;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 h1 {
   margin-bottom: 16px;
+  cursor: default;
 }
 
 label {
@@ -35,33 +46,44 @@ label {
 
 input {
   border: 1px solid #eeeeee;
-  padding: 12px;
+  padding: 15px;
+  border-radius: 30px;
   outline: none;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  transition: all 300ms;
+}
+input:hover {
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.2);
+  opacity: 0.7;
+}
+input:focus {
+  opacity: 0.7;
 }
 
 button {
+  border-radius: 20px;
   cursor: pointer;
   padding: 12px;
   background: var(--main-color);
   border: none;
   color: white;
   font-size: 16px;
-  transition: background 0.3s ease;
+  transition: background 300ms ease;
 }
 
 button:hover {
-  background: var(--main-color);
+  background: var(--second-color);
 }
 
 button:disabled {
   cursor: default;
-  background: var(--main-color);
+  background: var(--third-color);
 }
 
 /* Join Page Styles */
 
 .centered-form {
-  background: #333744;
+  background: var(--main-bg);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -70,10 +92,11 @@ button:disabled {
 }
 
 .centered-form__box {
-  box-shadow: 0px 0px 17px 1px #1d1f26;
+  box-shadow: 0px 0px 25px #0000004d, 0px 0px 70px #ffffff4b;
   background: #f7f7fa;
   padding: 24px;
   width: 250px;
+  z-index: 9999;
 }
 
 .centered-form button {
@@ -89,12 +112,14 @@ button:disabled {
 
 .chat {
   display: flex;
+  background: var(--main-bg);
 }
 
 .chat__sidebar {
+  cursor: default;
   height: 100vh;
   color: white;
-  background: #333744;
+  background: var(--main-bg);
   width: 225px;
   overflow-y: scroll;
 }
@@ -118,6 +143,14 @@ button:disabled {
 
 .message {
   margin-bottom: 16px;
+  background-color: rgb(236, 236, 236);
+  padding: 10px;
+  border-radius: 15px;
+  transition: all 400ms ease-in-out;
+}
+
+.message:hover {
+  transform: scale(1.02);
 }
 
 .message__name {
@@ -132,7 +165,7 @@ button:disabled {
 }
 
 .message a {
-  color: #0070cc;
+  color: #008a0b;
 }
 
 /* Message Composition Styles */
@@ -167,19 +200,52 @@ button:disabled {
 .room-title {
   font-weight: 400;
   font-size: 22px;
-  background: #2c2f3a;
-  padding: 24px;
+  background: #22252e;
+  padding: 18px;
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  transition: all 500ms;
 }
-
+.room-title:hover {
+  border-bottom: 5px solid rgb(255, 255, 255);
+}
 .list-title {
   font-weight: 500;
   font-size: 18px;
   margin-bottom: 4px;
   padding: 12px 24px 0 24px;
 }
+.dot {
+  margin-top: 4px;
+  margin-right: 4px;
+  float: left;
+  background-color: green;
+  border-radius: 50%;
+  width: 6px;
+  height: 6px;
+}
 
 .users {
   list-style-type: none;
-  font-weight: 300;
+  font-weight: 250;
   padding: 12px 24px 0 24px;
+}
+
+canvas {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+::-webkit-scrollbar-track {
+  border: 1px solid rgba(204, 204, 204, 0.158);
+  background-color: #0000005e;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #0000005e;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #0000005e;
 }
